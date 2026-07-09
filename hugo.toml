@@ -3,6 +3,32 @@ locale = "zh-cn"
 title = "软件开发工具实践 - 小组站点"
 theme = "ananke"
 
+# 顶部导航（目录）
+[[menu.main]]
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "实验记录"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  name = "分工与任务"
+  url = "/team/"
+  weight = 3
+
+[[menu.main]]
+  name = "部署"
+  url = "/deploy/"
+  weight = 4
+
+[[menu.main]]
+  name = "报告"
+  url = "/report/"
+  weight = 5
+
 [params]
   # 覆盖 Ananke 默认的 body 样式（默认是 "avenir bg-near-white"）
   body_classes = "custom-body"
