@@ -24,11 +24,6 @@ theme = "ananke"
   url = "/deploy/"
   weight = 4
 
-[[menu.main]]
-  name = "验收清单"
-  url = "/report/"
-  weight = 5
-
 [params]
   # 覆盖 Ananke 默认的 body 样式（默认是 "avenir bg-near-white"）
   body_classes = "custom-body"
