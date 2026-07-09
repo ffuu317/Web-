@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -11,11 +11,11 @@
     
     
     
-      <meta name="robots" content="noindex, nofollow">
+      <meta name="robots" content="index, follow">
     
     
 
-    <link rel="stylesheet" href="/ananke/css/main.css"><link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css" integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin="anonymous"><link rel="stylesheet" href="/css/custom.css">
     <script>
   (function () {
     "use strict";
@@ -118,8 +118,11 @@
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Posts">
 
+      
+      
+    
 	
-  </head><body class="ma0 custom-body development is-section is-section">
+  </head><body class="ma0 custom-body production is-section is-section">
 
   <header>
     <div class="pb3-m pb6-l site-header-bg">
@@ -149,8 +152,8 @@
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/team/" title="分工与任务 page">
-              分工与任务
+            <a class="hover-white white-90 no-underline" href="/team/" title="任务问题 page">
+              任务问题
             </a>
           </li>
           
@@ -161,8 +164,8 @@
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/report/" title="报告 page">
-              报告
+            <a class="hover-white white-90 no-underline" href="/report/" title="验收清单 page">
+              验收清单
             </a>
           </li>
           
@@ -207,25 +210,100 @@
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
       <h2 id="实验目标">实验目标</h2>
-<p>安装 Web 开发环境（VS Code、Git、Hugo），构建一个静态站点，了解和实践 Web 服务器、软件包及管理器等工具和概念。</p>
+<p>本次实验的目标是完成 Web 开发环境的基本搭建，并能够运行一个 Hugo 静态网站。通过本次实验，需要熟悉 VS Code、Git、Hugo 等工具的安装和使用，理解本地预览、静态文件生成、代码仓库管理以及后续部署之间的关系。</p>
+<p>对应评分表中的内容主要包括：</p>
+<table>
+	<thead>
+			<tr>
+					<th>考核项目</th>
+					<th>本实验对应内容</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>项目与代码库配置</td>
+					<td>创建项目目录，配置 Git，整理 Hugo 项目结构</td>
+			</tr>
+			<tr>
+					<td>Web 运行环境</td>
+					<td>安装 Hugo，运行本地开发服务器，生成静态网页</td>
+			</tr>
+			<tr>
+					<td>Web 站点基本功能</td>
+					<td>能够访问首页、实验记录、任务问题、部署说明等页面</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="实验环境">实验环境</h2>
+<table>
+	<thead>
+			<tr>
+					<th>项目</th>
+					<th>说明</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>操作系统</td>
+					<td>Windows 11</td>
+			</tr>
+			<tr>
+					<td>编辑器</td>
+					<td>Visual Studio Code</td>
+			</tr>
+			<tr>
+					<td>版本管理工具</td>
+					<td>Git</td>
+			</tr>
+			<tr>
+					<td>静态网站生成器</td>
+					<td>Hugo Extended</td>
+			</tr>
+			<tr>
+					<td>网站主题</td>
+					<td>Ananke</td>
+			</tr>
+			<tr>
+					<td>本地预览地址</td>
+					<td><code>http://localhost:1313/</code></td>
+			</tr>
+	</tbody>
+</table>
 <h2 id="实践过程">实践过程</h2>
-<ol>
-<li>下载并安装 VS Code，安装 Markdown 插件</li>
-<li>下载并安装 Git，配置用户信息</li>
-<li>下载 Hugo Extended 版本，解压并配置环境变量</li>
-<li>使用 <code>hugo new site</code> 创建站点，下载 Ananke 主题</li>
-<li>本地预览，确认站点正常运行</li>
-</ol>
-<h2 id="遇到的问题与解决方案">遇到的问题与解决方案</h2>
-<p><strong>问题1：Hugo 安装后终端提示 &ldquo;hugo 不是内部或外部命令&rdquo;</strong></p>
-<p>原因：没有将 Hugo 的安装路径添加到系统环境变量 Path 中。</p>
-<p>解决方案：将 <code>C:\hugo\</code> 路径添加到系统环境变量 Path，然后重新打开终端即可生效。</p>
-<p><strong>问题2：PowerShell 中 git submodule 命令报错</strong></p>
-<p>原因：命令格式错误，<code>git</code> 和 <code>themes/ananke</code> 之间缺少空格。</p>
-<p>解决方案：确保命令格式正确：<code>git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke</code></p>
-<p><strong>问题3：hugo.toml 文件编码问题导致 Hugo 无法加载配置</strong></p>
-<p>原因：使用 PowerShell echo 命令生成的文件带有 BOM 头，Hugo 无法识别。</p>
-<p>解决方案：在 VS Code 中手动创建 hugo.toml，并保存为 UTF-8 无 BOM 格式。</p>
+<h3 id="1-准备项目目录">1. 准备项目目录</h3>
+<p>先在本地创建课程网站项目目录，用于保存 Hugo 的配置文件、内容文件、静态资源和生成后的网页文件。项目目录中主要包含以下内容：</p>
+<table>
+	<thead>
+			<tr>
+					<th>目录或文件</th>
+					<th>作用</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>hugo.toml</code></td>
+					<td>网站基础配置，包括标题、主题、菜单和样式文件</td>
+			</tr>
+			<tr>
+					<td><code>content/</code></td>
+					<td>网站正文内容，例如首页、实验记录、任务问题和部署说明</td>
+			</tr>
+			<tr>
+					<td><code>static/</code></td>
+					<td>静态资源目录，用于存放图片、CSS 等文件</td>
+			</tr>
+			<tr>
+					<td><code>themes/</code></td>
+					<td>Hugo 主题目录</td>
+			</tr>
+			<tr>
+					<td><code>public/</code></td>
+					<td>执行构建后生成的静态网页文件</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="2-安装和配置-git">2. 安装和配置 Git</h3>
+<p>安装 Git 后，用于管理项目代码和后续提交到 GitHub 仓库。常用检查命令如下：</p>
     </div>
     <a href="/posts/exp1-web-dev-env/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">查看详情</a>
   </div>
@@ -246,6 +324,15 @@
 </footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 

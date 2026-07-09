@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
@@ -11,11 +11,11 @@
     
     
     
-      <meta name="robots" content="noindex, nofollow">
+      <meta name="robots" content="index, follow">
     
     
 
-    <link rel="stylesheet" href="/ananke/css/main.css"><link rel="stylesheet" href="/css/custom.css">
+    <link rel="stylesheet" href="/ananke/css/main.02a37ad6c4e155c542d276915a0e3f83f5c7c5fec443350f6e60753f1679b7a7.css" integrity="sha256-AqN61sThVcVC0naRWg4/g/XHxf7EQzUPbmB1PxZ5t6c=" crossorigin="anonymous"><link rel="stylesheet" href="/css/custom.css">
     <script>
   (function () {
     "use strict";
@@ -110,13 +110,16 @@
 
 	<meta itemprop="name" content="部署与发布">
 	<meta itemprop="description" content="把站点发布到可访问的地址（Nginx 或 GitHub Pages）。">
-	<meta itemprop="wordCount" content="45">
+	<meta itemprop="wordCount" content="158">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="部署与发布">
 	<meta name="twitter:description" content="把站点发布到可访问的地址（Nginx 或 GitHub Pages）。">
 
+      
+      
+    
 	
-  </head><body class="ma0 custom-body development is-page is-page page-deploy">
+  </head><body class="ma0 custom-body production is-page is-page page-deploy">
    
   
 
@@ -149,8 +152,8 @@
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/team/" title="分工与任务 page">
-              分工与任务
+            <a class="hover-white white-90 no-underline" href="/team/" title="任务问题 page">
+              任务问题
             </a>
           </li>
           
@@ -161,8 +164,8 @@
           </li>
           
           <li class="list f5 f4-ns fw4 dib pr3">
-            <a class="hover-white white-90 no-underline" href="/report/" title="报告 page">
-              报告
+            <a class="hover-white white-90 no-underline" href="/report/" title="验收清单 page">
+              验收清单
             </a>
           </li>
           
@@ -193,7 +196,34 @@
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links near-black pr4-l w-100-l"><p>本页用于记录部署方案与操作步骤（建议由负责部署的同学持续更新）。</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links near-black pr4-l w-100-l"><p>本页用于记录傅佳仪负责的虚拟机部署方案与操作步骤，重点对应 Linux 环境配置、Linux 账户配置、远程管理配置和 Web 站点部署。</p>
+<h2 id="对应验收项目">对应验收项目</h2>
+<table>
+	<thead>
+			<tr>
+					<th>验收项目</th>
+					<th>本页记录重点</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Linux 环境配置</td>
+					<td>Nginx 安装、系统环境、端口、防火墙</td>
+			</tr>
+			<tr>
+					<td>Linux 账户配置</td>
+					<td>用户目录、站点目录、文件权限</td>
+			</tr>
+			<tr>
+					<td>远程管理配置</td>
+					<td>SSH 登录、端口、上传和远程维护</td>
+			</tr>
+			<tr>
+					<td>Web 站点部署</td>
+					<td>生成 <code>public/</code>、上传静态文件、配置 Nginx 并访问验证</td>
+			</tr>
+	</tbody>
+</table>
 <h2 id="方案-alinux--nginx虚拟机云服务器">方案 A：Linux + Nginx（虚拟机/云服务器）</h2>
 <p><strong>目标</strong>：让站点可以通过外网访问（IP/域名 + 端口）。</p>
 <p>建议步骤：</p>
@@ -207,6 +237,85 @@
 <blockquote>
 <p>具体命令与配置片段请根据你们的服务器系统补充到这里（Ubuntu/CentOS 等）。</p>
 </blockquote>
+<h2 id="傅佳仪部署任务记录">傅佳仪部署任务记录</h2>
+<table>
+	<thead>
+			<tr>
+					<th>任务</th>
+					<th>记录内容</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Linux 环境</td>
+					<td>虚拟机系统版本、Nginx 安装方式、防火墙/端口配置</td>
+			</tr>
+			<tr>
+					<td>Linux 账户</td>
+					<td>部署用户、站点目录、文件读写权限</td>
+			</tr>
+			<tr>
+					<td>远程管理</td>
+					<td>SSH 登录命令、端口、文件上传方式</td>
+			</tr>
+			<tr>
+					<td>站点部署</td>
+					<td><code>public/</code> 生成、上传路径、Nginx <code>root</code>、访问地址</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="部署中可能遇到的问题与解决办法">部署中可能遇到的问题与解决办法</h2>
+<table>
+	<thead>
+			<tr>
+					<th>模块</th>
+					<th>常见难点</th>
+					<th>解决办法</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Linux 环境配置</td>
+					<td>安装 Nginx 后访问不到默认页</td>
+					<td>检查 Nginx 是否启动：<code>systemctl status nginx</code>；检查防火墙和安全组是否放行端口</td>
+			</tr>
+			<tr>
+					<td>Linux 环境配置</td>
+					<td>服务器没有 Hugo 命令</td>
+					<td>可在本地执行 <code>hugo -D</code> 生成 <code>public/</code>，只把静态文件上传到服务器</td>
+			</tr>
+			<tr>
+					<td>Linux 账户配置</td>
+					<td>普通用户无法写入 <code>/var/www/</code></td>
+					<td>使用管理员权限创建站点目录，或把目录属主改为当前部署用户</td>
+			</tr>
+			<tr>
+					<td>Linux 账户配置</td>
+					<td>Nginx 读取站点文件失败</td>
+					<td>检查目录权限，确保 Nginx 运行用户对站点目录有读权限</td>
+			</tr>
+			<tr>
+					<td>远程管理配置</td>
+					<td>SSH 登录失败</td>
+					<td>核对 IP、端口、用户名和密码/密钥；确认服务器 SSH 服务已开启</td>
+			</tr>
+			<tr>
+					<td>远程管理配置</td>
+					<td>文件上传后目录不对</td>
+					<td>上传前确认目标路径，上传后用 <code>ls</code> 检查 <code>index.html</code> 是否在 Nginx root 目录下</td>
+			</tr>
+			<tr>
+					<td>Web 站点部署</td>
+					<td>首页 404 或样式丢失</td>
+					<td>检查 <code>root</code> 是否指向包含 <code>index.html</code> 的目录，检查 <code>/css/custom.css</code> 是否可访问</td>
+			</tr>
+			<tr>
+					<td>Web 站点部署</td>
+					<td>修改后页面仍是旧版</td>
+					<td>重新执行 <code>hugo -D</code>，上传新的 <code>public/</code>，并清理浏览器缓存</td>
+			</tr>
+	</tbody>
+</table>
 <h2 id="方案-bgithub-pages可选">方案 B：GitHub Pages（可选）</h2>
 <p>如果你们希望免服务器部署，可以考虑 GitHub Pages。常见做法：</p>
 <ul>
@@ -233,6 +342,15 @@
 </footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 

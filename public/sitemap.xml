@@ -17,8 +17,8 @@
   </url><url>
     <loc>http://localhost:1313/team/</loc>
   </url><url>
-    <loc>http://localhost:1313/report/</loc>
-  </url><url>
     <loc>http://localhost:1313/deploy/</loc>
+  </url><url>
+    <loc>http://localhost:1313/report/</loc>
   </url>
 </urlset>
