@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>软件开发工具实践 - 小组站点</title>
+		<link>http://localhost:1313/</link>
+		<description>Recent content on 软件开发工具实践 - 小组站点</description>
+		<generator>Hugo</generator>
+		<language>zh-cn</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 09 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>实验1：Web开发环境搭建</title>
+				<link>http://localhost:1313/posts/exp1-web-dev-env/</link>
+				<pubDate>Thu, 09 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/posts/exp1-web-dev-env/</guid>
+				<description>&lt;h2 id=&#34;实验目标&#34;&gt;实验目标&lt;/h2&gt;&#xA;&lt;p&gt;安装 Web 开发环境（VS Code、Git、Hugo），构建一个静态站点，了解和实践 Web 服务器、软件包及管理器等工具和概念。&lt;/p&gt;&#xA;&lt;h2 id=&#34;实践过程&#34;&gt;实践过程&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;下载并安装 VS Code，安装 Markdown 插件&lt;/li&gt;&#xA;&lt;li&gt;下载并安装 Git，配置用户信息&lt;/li&gt;&#xA;&lt;li&gt;下载 Hugo Extended 版本，解压并配置环境变量&lt;/li&gt;&#xA;&lt;li&gt;使用 &lt;code&gt;hugo new site&lt;/code&gt; 创建站点，下载 Ananke 主题&lt;/li&gt;&#xA;&lt;li&gt;本地预览，确认站点正常运行&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;遇到的问题与解决方案&#34;&gt;遇到的问题与解决方案&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;问题1：Hugo 安装后终端提示 &amp;ldquo;hugo 不是内部或外部命令&amp;rdquo;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;原因：没有将 Hugo 的安装路径添加到系统环境变量 Path 中。&lt;/p&gt;&#xA;&lt;p&gt;解决方案：将 &lt;code&gt;C:\hugo\&lt;/code&gt; 路径添加到系统环境变量 Path，然后重新打开终端即可生效。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;问题2：PowerShell 中 git submodule 命令报错&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;原因：命令格式错误，&lt;code&gt;git&lt;/code&gt; 和 &lt;code&gt;themes/ananke&lt;/code&gt; 之间缺少空格。&lt;/p&gt;&#xA;&lt;p&gt;解决方案：确保命令格式正确：&lt;code&gt;git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;问题3：hugo.toml 文件编码问题导致 Hugo 无法加载配置&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;原因：使用 PowerShell echo 命令生成的文件带有 BOM 头，Hugo 无法识别。&lt;/p&gt;&#xA;&lt;p&gt;解决方案：在 VS Code 中手动创建 hugo.toml，并保存为 UTF-8 无 BOM 格式。&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
