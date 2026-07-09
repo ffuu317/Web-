@@ -1,4 +1,27 @@
 baseURL = "http://localhost:1313/"
-languageCode = "zh-cn"
+locale = "zh-cn"
 title = "软件开发工具实践 - 小组站点"
 theme = "ananke"
+
+[params]
+  # 覆盖 Ananke 默认的 body 样式（默认是 "avenir bg-near-white"）
+  body_classes = "custom-body"
+
+  # 顶部 Header 背景（可写 Tachyons 类名，也可以写自定义 class）
+  background_color_class = "site-header-bg"
+  cover_dimming_class = "bg-black-30"
+
+  # 用于部分页面内容的默认文字颜色（Tachyons 类名）
+  text_color = "near-black"
+  date_format = "2006-01-02"
+  read_more_copy = "查看详情"
+
+  # Ananke 主题自定义
+  [params.ananke]
+    # 挂载自定义样式（优先使用 ananke.custom_css；旧的 params.custom_css 已弃用）
+    custom_css = ["css/custom.css"]
+    show_recent_posts = true
+
+# 首页最近文章数量（Ananke 会读取这个参数）
+recent_posts_number = 6
+mainSections = ["posts"]
