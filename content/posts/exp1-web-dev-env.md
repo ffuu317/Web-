@@ -38,7 +38,6 @@ draft: false
 
 ## 实验截图
 
-<!-- 替换为你的实际截图 -->
-![环境验证](/images/screenshot_env.png)
-![站点预览](/images/screenshot_site.png)
-![Git提交记录](/images/screenshot_git.png)
+
+![站点预览](/images/screenshow1.png)
+![Git提交记录](/images/screenshot2.png)
