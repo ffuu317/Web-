@@ -144,20 +144,37 @@ git submodule update --init --recursive
 
 ## 实验截图
 
-后续提交报告时，可以在这里补充以下截图：
+下面按"配置 → 环境 → 启动"的顺序展示本次实验的关键截图。
 
-- Hugo 本地运行成功截图
-- 网站首页预览截图
-- GitHub 仓库文件结构截图
-- Git 提交记录截图
-- 虚拟机或服务器部署访问截图
+### 1. Hugo 配置文件
 
-示例引用格式：
+`hugo.toml` 中配置了网站基础信息、菜单、自定义样式与主题参数。这里分两段展示：
 
-```markdown
-![站点预览](/images/screenshow1.png)
-![Git提交记录](/images/screenshot2.png)
-```
+上半段：站点基本信息、菜单与主题名。
+
+![Hugo 配置文件（前半段）](/images/screenshot-hugo-config-1.png)
+<p class="img-caption">图 1　hugo.toml 前半段：baseURL、title、theme 与 main 菜单</p>
+
+下半段：自定义样式、Ananke 主题参数与首页设置。
+
+![Hugo 配置文件（后半段）](/images/screenshot-hugo-config-2.svg)
+<p class="img-caption">图 2　hugo.toml 后半段：params、自定义 CSS 与首页文章数</p>
+
+### 2. Hugo 版本检查
+
+把 `hugo.exe` 所在目录加入系统 Path 后，重新打开 PowerShell，执行 `hugo version`，可以看到当前 Hugo 的版本与构建信息。
+
+![Hugo 版本检查](/images/screenshot-hugo-version.png)
+<p class="img-caption">图 3　hugo version 输出，版本号与构建时间</p>
+
+### 3. Hugo 本地运行
+
+在项目目录下执行 `hugo server -D`，终端输出站点构建信息并启动本地服务器，可以访问 `http://localhost:1313/` 进行预览。
+
+![Hugo 本地运行](/images/screenshot-hugo-running.svg)
+<p class="img-caption">图 4　hugo server -D 启动成功，服务器在 1313 端口监听</p>
+
+> 提示：截图统一放在 `static/images/`，引用时使用 `/images/xxx.svg`，本地预览和服务器部署路径保持一致。
 
 ## 实验小结
 

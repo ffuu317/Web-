@@ -215,7 +215,7 @@
 目录或文件 作用 hugo.toml 网站基础配置，包括标题、主题、菜单和样式文件 content/ 网站正文内容，例如首页、实验记录、任务问题和部署说明 static/ 静态资源目录，用于存放图片、CSS 等文件 themes/ Hugo 主题目录 public/ 执行构建后生成的静态网页文件 2. 安装和配置 Git 安装 Git 后，用于管理项目代码和后续提交到 GitHub 仓库。常用检查命令如下：">
 	<meta itemprop="datePublished" content="2026-07-09T00:00:00+00:00">
 	<meta itemprop="dateModified" content="2026-07-09T00:00:00+00:00">
-	<meta itemprop="wordCount" content="259">
+	<meta itemprop="wordCount" content="310">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="实验1：Web开发环境搭建">
 	<meta name="twitter:description" content="实验目标 本次实验的目标是完成 Web 开发环境的基本搭建，并能够运行一个 Hugo 静态网站。通过本次实验，需要熟悉 VS Code、Git、Hugo 等工具的安装和使用，理解本地预览、静态文件生成、代码仓库管理以及后续部署之间的关系。
@@ -498,22 +498,27 @@
 	</tbody>
 </table>
 <h2 id="实验截图">实验截图</h2>
-<p>后续提交报告时，可以在这里补充以下截图：</p>
-<ul>
-<li>Hugo 本地运行成功截图</li>
-<li>网站首页预览截图</li>
-<li>GitHub 仓库文件结构截图</li>
-<li>Git 提交记录截图</li>
-<li>虚拟机或服务器部署访问截图</li>
-</ul>
-<p>示例引用格式：</p>
-<div class="code-block">
-    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
-      <span class="code-copy-label" aria-hidden="true">Copy</span>
-    </button>
-    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#f92672">站点预览</span>](<span style="color:#a6e22e">/images/screenshow1.png</span>)
-</span></span><span style="display:flex;"><span>![<span style="color:#f92672">Git提交记录</span>](<span style="color:#a6e22e">/images/screenshot2.png</span>)</span></span></code></pre></div>
-  </div><h2 id="实验小结">实验小结</h2>
+<p>下面按&quot;配置 → 环境 → 启动&quot;的顺序展示本次实验的关键截图。</p>
+<h3 id="1-hugo-配置文件">1. Hugo 配置文件</h3>
+<p><code>hugo.toml</code> 中配置了网站基础信息、菜单、自定义样式与主题参数。这里分两段展示：</p>
+<p>上半段：站点基本信息、菜单与主题名。</p>
+<p><img src="/images/screenshot-hugo-config-1.png" alt="Hugo 配置文件（前半段）"></p>
+<p class="img-caption">图 1　hugo.toml 前半段：baseURL、title、theme 与 main 菜单</p>
+<p>下半段：自定义样式、Ananke 主题参数与首页设置。</p>
+<p><img src="/images/screenshot-hugo-config-2.svg" alt="Hugo 配置文件（后半段）"></p>
+<p class="img-caption">图 2　hugo.toml 后半段：params、自定义 CSS 与首页文章数</p>
+<h3 id="2-hugo-版本检查">2. Hugo 版本检查</h3>
+<p>把 <code>hugo.exe</code> 所在目录加入系统 Path 后，重新打开 PowerShell，执行 <code>hugo version</code>，可以看到当前 Hugo 的版本与构建信息。</p>
+<p><img src="/images/screenshot-hugo-version.png" alt="Hugo 版本检查"></p>
+<p class="img-caption">图 3　hugo version 输出，版本号与构建时间</p>
+<h3 id="3-hugo-本地运行">3. Hugo 本地运行</h3>
+<p>在项目目录下执行 <code>hugo server -D</code>，终端输出站点构建信息并启动本地服务器，可以访问 <code>http://localhost:1313/</code> 进行预览。</p>
+<p><img src="/images/screenshot-hugo-running.svg" alt="Hugo 本地运行"></p>
+<p class="img-caption">图 4　hugo server -D 启动成功，服务器在 1313 端口监听</p>
+<blockquote>
+<p>提示：截图统一放在 <code>static/images/</code>，引用时使用 <code>/images/xxx.svg</code>，本地预览和服务器部署路径保持一致。</p>
+</blockquote>
+<h2 id="实验小结">实验小结</h2>
 <p>通过本次实验，完成了 Hugo 静态网站的本地运行和基础内容整理，了解了 <code>content/</code>、<code>static/</code>、<code>themes/</code>、<code>public/</code> 等目录的作用。实验中主要问题集中在环境变量、主题文件、样式加载和图片路径上。解决这些问题后，网站能够在本地正常预览，并可以继续交给部署同学上传到虚拟机或服务器中运行。</p>
 <ul class="pa0">
   

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" width="760" height="280" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#282c34; }
+    .gutter{ fill:#21252b; }
+    .ln{ fill:#5c6370; font-size:13px; }
+    .c{ fill:#5c6370; font-style:italic; }
+    .kw{ fill:#e06c75; }
+    .str{ fill:#e5c07b; }
+    .t{ fill:#abb2bf; font-size:14px; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="760" height="280"/>
+  <rect class="gutter" x="0" y="0" width="44" height="280"/>
+  <line x1="44" y1="0" x2="44" y2="280" stroke="#3e4451" stroke-width="1"/>
+
+  <g font-size="14">
+    <text class="ln" x="36" y="38" text-anchor="end">35</text>
+    <text class="c" x="60" y="38"># Logging</text>
+
+    <text class="ln" x="36" y="62" text-anchor="end">36</text>
+    <text class="c" x="60" y="62">#SyslogFacility AUTH</text>
+
+    <text class="ln" x="36" y="86" text-anchor="end">37</text>
+    <text class="c" x="60" y="86">#LogLevel INFO</text>
+
+    <text class="ln" x="36" y="110" text-anchor="end">38</text>
+    <text class="c" x="60" y="110"></text>
+
+    <text class="ln" x="36" y="134" text-anchor="end">39</text>
+    <text class="c" x="60" y="134"># Authentication:</text>
+
+    <text class="ln" x="36" y="158" text-anchor="end">40</text>
+    <text class="c" x="60" y="158">#LoginGraceTime 2m</text>
+
+    <text class="ln" x="36" y="186" text-anchor="end">41</text>
+    <text class="kw" x="60" y="186">PermitRootLogin</text>
+    <text class="str" x="220" y="186">no</text>
+
+    <text class="ln" x="36" y="210" text-anchor="end">42</text>
+    <text class="c" x="60" y="210">#StrictModes yes</text>
+
+    <text class="ln" x="36" y="234" text-anchor="end">43</text>
+    <text class="c" x="60" y="234">#MaxAuthTries 6</text>
+
+    <text class="ln" x="36" y="258" text-anchor="end">44</text>
+    <text class="c" x="60" y="258">#MaxSessions 10</text>
+  </g>
+</svg>

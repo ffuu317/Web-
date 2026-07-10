@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 220" width="860" height="220" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#1e1e2e; }
+    .prompt{ fill:#cba6f7; }
+    .cmd{ fill:#f9e2af; }
+    .ok{ fill:#a6e3a1; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="860" height="220"/>
+
+  <g font-size="13.5">
+    <text class="prompt" x="20" y="36">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="36">exit</text>
+    <text class="ok" x="20" y="60">logout</text>
+    <text class="ok" x="20" y="80">Connection to localhost closed.</text>
+
+    <text x="20" y="104"></text>
+
+    <text class="prompt" x="20" y="128">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="128">echo 'export MY_NAME="ffuu"' >> ~/.bashrc</text>
+
+    <text class="prompt" x="20" y="152">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="152">source ~/.bashrc</text>
+
+    <text class="prompt" x="20" y="176">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="176">echo $MY_NAME</text>
+    <text class="ok" x="20" y="200">ffuu</text>
+  </g>
+</svg>

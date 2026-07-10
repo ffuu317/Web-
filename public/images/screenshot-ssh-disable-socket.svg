@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 240" width="860" height="240" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#1e1e2e; }
+    .prompt{ fill:#cba6f7; }
+    .cmd{ fill:#f9e2af; }
+    .ok{ fill:#a6e3a1; }
+    .dim{ fill:#6c7086; font-size:13px; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="860" height="240"/>
+
+  <g font-size="13.5">
+    <text class="prompt" x="20" y="36">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="36">sudo systemctl stop ssh.socket</text>
+
+    <text class="prompt" x="20" y="60">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="60">sudo systemctl disable ssh.socket</text>
+
+    <text class="ok" x="20" y="84">Removed "/etc/systemd/system/ssh.service.requires/ssh.socket".</text>
+    <text class="ok" x="20" y="104">Removed "/etc/systemd/system/sockets.target.wants/ssh.socket".</text>
+    <text class="ok" x="20" y="124">Removed "/etc/systemd/system/sockets.target.wants/ssh.socket".</text>
+
+    <text x="20" y="148"></text>
+
+    <text class="prompt" x="20" y="172">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="172">sudo service ssh restart</text>
+
+    <text x="20" y="196"></text>
+
+    <text class="prompt" x="20" y="220">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="220">sudo ss -tlnp | grep 2222</text>
+  </g>
+</svg>

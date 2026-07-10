@@ -110,7 +110,7 @@
 
 	<meta itemprop="name" content="部署与发布">
 	<meta itemprop="description" content="把站点发布到可访问的地址（Nginx 或 GitHub Pages）。">
-	<meta itemprop="wordCount" content="158">
+	<meta itemprop="wordCount" content="717">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="部署与发布">
 	<meta name="twitter:description" content="把站点发布到可访问的地址（Nginx 或 GitHub Pages）。">
@@ -231,6 +231,222 @@
 <blockquote>
 <p>具体命令与配置片段请根据你们的服务器系统补充到这里（Ubuntu/CentOS 等）。</p>
 </blockquote>
+<h2 id="linux-环境配置nginx-安装">Linux 环境配置（Nginx 安装）</h2>
+<p>部署站点前需要先在服务器上安装 Nginx，作为静态文件的 Web 服务器。</p>
+<h3 id="1-更新软件源">1. 更新软件源</h3>
+<p>安装前先更新 apt 软件包列表，确保能获取到最新版本的软件：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt update</span></span></code></pre></div>
+  </div><p>更新过程中会从 Ubuntu 官方源下载各个组件的包信息，完成后显示有多少个包可以升级。</p>
+<p><img src="/images/screenshot-nginx-apt-update.svg" alt="apt update 更新软件源"></p>
+<p class="img-caption">图 1　sudo apt update 更新完成，共 111 个包可升级</p>
+<h3 id="2-安装-nginx">2. 安装 Nginx</h3>
+<p>软件源更新完成后，安装 Nginx：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install nginx -y</span></span></code></pre></div>
+  </div><p>安装完成后，用 <code>nginx -v</code> 验证是否安装成功并查看版本号。</p>
+<p><img src="/images/screenshot-nginx-install.svg" alt="安装 Nginx"></p>
+<p class="img-caption">图 2　Nginx 1.24.0 安装成功</p>
+<h3 id="3-验证-nginx-服务">3. 验证 Nginx 服务</h3>
+<p>安装完成后，Nginx 服务会自动启动。可以用以下命令确认：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看 Nginx 服务状态</span>
+</span></span><span style="display:flex;"><span>sudo systemctl status nginx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 访问本地 80 端口，测试默认页面是否正常</span>
+</span></span><span style="display:flex;"><span>curl http://localhost/</span></span></code></pre></div>
+  </div><h2 id="linux-账户配置">Linux 账户配置</h2>
+<p>确认当前登录用户和 SSH 环境，为后续部署做准备。</p>
+<h3 id="1-查看当前用户">1. 查看当前用户</h3>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 查看当前登录的用户名</span>
+</span></span><span style="display:flex;"><span>whoami
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看 /home 目录下有哪些用户</span>
+</span></span><span style="display:flex;"><span>ls /home</span></span></code></pre></div>
+  </div><p><img src="/images/screenshot-account-check.svg" alt="账户与 SSH 环境检查"></p>
+<p class="img-caption">图 3　查看当前用户、用户目录和 sshd 路径</p>
+<h3 id="2-确认-ssh-服务存在">2. 确认 SSH 服务存在</h3>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 检查 sshd 可执行文件路径</span>
+</span></span><span style="display:flex;"><span>which sshd</span></span></code></pre></div>
+  </div><p>如果输出 <code>/usr/sbin/sshd</code>，说明 SSH 服务端已经安装。</p>
+<h3 id="3-遇到的难点与解决过程">3. 遇到的难点与解决过程</h3>
+<p><strong>难点：命令输错导致 command not found</strong></p>
+<p>刚开始输入 <code>Is /home</code>（把小写的 L 写成了大写的 i），终端提示 <code>Is: command not found</code>。</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 错误写法（大写 i 和小写 L 搞混了）</span>
+</span></span><span style="display:flex;"><span>Is /home
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Is: command not found</span></span></span></code></pre></div>
+  </div><p><strong>解决方法</strong>：Linux 命令都是小写的，列表命令是 <code>ls</code>（list 的缩写，字母 L 的小写），不是 <code>Is</code>。改成正确的小写 <code>ls /home</code> 就能正常显示用户目录了。</p>
+<blockquote>
+<p>💡 小提示：在终端里，<code>l</code>（L 的小写）和 <code>I</code>（i 的大写）视觉上很像，输命令时注意区分。不确定命令时可以按 <code>Tab</code> 键让终端自动补全。</p>
+</blockquote>
+<h2 id="远程管理配置ssh">远程管理配置（SSH）</h2>
+<p>为了方便远程登录服务器和上传站点文件，需要配置好 SSH 服务。以下是本次实验中的 SSH 安全配置要点。</p>
+<h3 id="1-备份与编辑配置文件">1. 备份与编辑配置文件</h3>
+<p>修改前先备份原始配置，改错了可以随时恢复：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 备份原配置（防止改错）</span>
+</span></span><span style="display:flex;"><span>sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak</span></span></code></pre></div>
+  </div><p><strong>编辑方式</strong>：如果 <code>nano</code> 无法修改，可以改用 VS Code 终端直接编辑：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 用 VS Code 终端编辑（推荐）</span>
+</span></span><span style="display:flex;"><span>code /etc/ssh/sshd_config
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或用 vi/vim 编辑</span>
+</span></span><span style="display:flex;"><span>sudo vi /etc/ssh/sshd_config</span></span></code></pre></div>
+  </div><blockquote>
+<p><strong>vi/vim 操作提示</strong>：按 <code>i</code> 进入编辑模式；修改后按 <code>Esc</code> 退出编辑，输入 <code>:wq</code> 保存退出。</p>
+</blockquote>
+<h3 id="2-修改-ssh-端口">2. 修改 SSH 端口</h3>
+<p>把默认的 22 端口改为自定义端口（例如 2222），降低被暴力扫描的概率：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Port 2222
+</span></span><span style="display:flex;"><span>#AddressFamily any
+</span></span><span style="display:flex;"><span>#ListenAddress 0.0.0.0
+</span></span><span style="display:flex;"><span>#ListenAddress ::</span></span></code></pre></div>
+  </div><p><img src="/images/screenshot-ssh-port.svg" alt="SSH 端口配置"></p>
+<p class="img-caption">图 4　sshd_config 中 Port 改为 2222</p>
+<h3 id="3-禁止-root-直接登录">3. 禁止 root 直接登录</h3>
+<p>出于安全考虑，关闭 root 账号的 SSH 登录权限，改为用普通用户登录后再 <code>sudo</code> 提权：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>PermitRootLogin no</span></span></code></pre></div>
+  </div><p><img src="/images/screenshot-ssh-root.svg" alt="禁止 root 登录"></p>
+<p class="img-caption">图 5　PermitRootLogin 设置为 no</p>
+<h3 id="4-开启密码认证">4. 开启密码认证</h3>
+<p>如果暂时还没有配置密钥登录，可以保留密码认证，确保能正常登录：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>PasswordAuthentication yes</span></span></code></pre></div>
+  </div><p><img src="/images/screenshot-ssh-password.svg" alt="密码认证开启"></p>
+<p class="img-caption">图 6　PasswordAuthentication 设置为 yes</p>
+<h3 id="5-重启-ssh-服务使配置生效">5. 重启 SSH 服务使配置生效</h3>
+<p>修改完 <code>sshd_config</code> 后，需要重启 sshd 服务才能让新配置生效：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 检查配置是否有语法错误</span>
+</span></span><span style="display:flex;"><span>sudo sshd -t
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重启 sshd 服务</span>
+</span></span><span style="display:flex;"><span>sudo service ssh restart</span></span></code></pre></div>
+  </div><h3 id="6-检查-ssh-服务状态与端口监听">6. 检查 SSH 服务状态与端口监听</h3>
+<p>修改端口后，验证服务是否正确运行并监听新端口：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 检查 SSH 服务状态</span>
+</span></span><span style="display:flex;"><span>sudo service ssh status
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 检查端口监听情况（确认 2222 是否被监听）</span>
+</span></span><span style="display:flex;"><span>sudo ss -tlnp | grep <span style="color:#ae81ff">2222</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看 sshd_config 中的端口配置</span>
+</span></span><span style="display:flex;"><span>sudo grep -E <span style="color:#e6db74">&#34;^Port|^#Port&#34;</span> /etc/ssh/sshd_config</span></span></code></pre></div>
+  </div><p><img src="/images/screenshot-ssh-status.svg" alt="SSH 服务状态与端口检查"></p>
+<p class="img-caption">图 7　检查 SSH 服务状态，发现仍监听端口 22（因 ssh.socket 干扰）</p>
+<h3 id="7-禁用-sshsocket-触发器">7. 禁用 ssh.socket 触发器</h3>
+<p>如果发现修改了端口但服务仍监听旧端口，可能是 <code>ssh.socket</code> 在干扰。需要禁用 socket 模式：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 停止并禁用 ssh.socket</span>
+</span></span><span style="display:flex;"><span>sudo systemctl stop ssh.socket
+</span></span><span style="display:flex;"><span>sudo systemctl disable ssh.socket
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 重启 SSH 服务</span>
+</span></span><span style="display:flex;"><span>sudo service ssh restart
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 再次检查端口监听</span>
+</span></span><span style="display:flex;"><span>sudo ss -tlnp | grep <span style="color:#ae81ff">2222</span></span></span></code></pre></div>
+  </div><p><img src="/images/screenshot-ssh-disable-socket.svg" alt="禁用 ssh.socket"></p>
+<p class="img-caption">图 8　禁用 ssh.socket 触发器后，端口配置才能正确生效</p>
+<h3 id="8-本地登录验证">8. 本地登录验证</h3>
+<p>在服务器上用新端口测试 SSH 登录，确认配置生效：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 使用新端口登录本地</span>
+</span></span><span style="display:flex;"><span>ssh localhost -p <span style="color:#ae81ff">2222</span></span></span></code></pre></div>
+  </div><p>首次登录会提示确认主机密钥，输入 <code>yes</code> 确认即可。</p>
+<p><img src="/images/screenshot-ssh-login.svg" alt="SSH 端口登录成功"></p>
+<p class="img-caption">图 9　成功通过端口 2222 登录到 Ubuntu 24.04 LTS</p>
+<h3 id="9-配置-linux-环境变量">9. 配置 Linux 环境变量</h3>
+<p>在服务器上配置个人环境变量，方便后续开发：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># 添加环境变量到 bashrc</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#39;export MY_NAME=&#34;ffuu&#34;&#39;</span> &gt;&gt; ~/.bashrc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 立即生效（不需要重启终端）</span>
+</span></span><span style="display:flex;"><span>source ~/.bashrc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 验证环境变量是否生效</span>
+</span></span><span style="display:flex;"><span>echo $MY_NAME</span></span></code></pre></div>
+  </div><p><img src="/images/screenshot-ssh-env.svg" alt="配置环境变量"></p>
+<p class="img-caption">图 10　配置环境变量 MY_NAME 并验证成功</p>
+<h3 id="10-防火墙放行新端口">10. 防火墙放行新端口</h3>
+<p>改了端口后，记得在防火墙中放行新的 SSH 端口，否则会连不上：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># firewalld 方式（CentOS / openEuler 等）</span>
+</span></span><span style="display:flex;"><span>sudo firewall-cmd --add-port<span style="color:#f92672">=</span>2222/tcp --permanent
+</span></span><span style="display:flex;"><span>sudo firewall-cmd --reload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ufw 方式（Ubuntu 等）</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow 2222/tcp
+</span></span><span style="display:flex;"><span>sudo ufw reload</span></span></code></pre></div>
+  </div><h3 id="11-登录验证">11. 登录验证</h3>
+<p>配置完成后，在本地用新端口测试登录：</p>
+<div class="code-block">
+    <button class="code-copy" type="button" hidden aria-label="Copy code to clipboard">
+      <span class="code-copy-label" aria-hidden="true">Copy</span>
+    </button>
+    <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -p <span style="color:#ae81ff">2222</span> 用户名@服务器IP</span></span></code></pre></div>
+  </div><blockquote>
+<p>⚠️ 重要提醒：修改 SSH 端口和 <code>PermitRootLogin</code> 之前，<strong>先不要关闭当前已登录的终端</strong>，用另一个终端测试登录，确认能正常连上再退出，避免把自己锁在服务器外面。</p>
+</blockquote>
 <h2 id="傅佳仪部署任务记录">傅佳仪部署任务记录</h2>
 <table>
 	<thead>
@@ -258,7 +474,86 @@
 			</tr>
 	</tbody>
 </table>
-<h2 id="部署中可能遇到的问题与解决办法">部署中可能遇到的问题与解决办法</h2>
+<h2 id="部署中遇到的难点与解决办法">部署中遇到的难点与解决办法</h2>
+<p>下面是本次实验中实际遇到的问题和对应的解决过程，方便后续部署参考。</p>
+<h3 id="1-命令输错导致-command-not-found">1. 命令输错导致 command not found</h3>
+<table>
+	<thead>
+			<tr>
+					<th>项目</th>
+					<th>内容</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>问题现象</td>
+					<td>输入 <code>Is /home</code>，终端提示 <code>Is: command not found</code></td>
+			</tr>
+			<tr>
+					<td>原因分析</td>
+					<td>把小写字母 <code>l</code>（L）和大写字母 <code>I</code>（i）搞混了，Linux 命令都是小写的</td>
+			</tr>
+			<tr>
+					<td>解决方法</td>
+					<td>改成正确的 <code>ls /home</code>（list 的缩写，L 的小写），正常显示用户目录</td>
+			</tr>
+			<tr>
+					<td>经验总结</td>
+					<td>终端字体下 <code>l</code> 和 <code>I</code> 视觉上很像，不确定时按 <code>Tab</code> 键让终端自动补全</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="2-ssh-端口修改不生效被-sshsocket-覆盖">2. SSH 端口修改不生效（被 ssh.socket 覆盖）</h3>
+<table>
+	<thead>
+			<tr>
+					<th>项目</th>
+					<th>内容</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>问题现象</td>
+					<td>修改了 <code>sshd_config</code> 的 <code>Port 2222</code>，但 <code>ss -tlnp</code> 显示仍监听端口 22</td>
+			</tr>
+			<tr>
+					<td>原因分析</td>
+					<td>Ubuntu 默认启用了 <code>ssh.socket</code>（socket 激活模式），修改 <code>sshd_config</code> 不会影响 socket 的监听端口</td>
+			</tr>
+			<tr>
+					<td>解决方法</td>
+					<td><code>sudo systemctl stop ssh.socket</code> + <code>sudo systemctl disable ssh.socket</code>，然后 <code>sudo service ssh restart</code></td>
+			</tr>
+			<tr>
+					<td>经验总结</td>
+					<td>改端口前先确认系统用的是 <code>ssh.service</code> 还是 <code>ssh.socket</code>，两者是两套机制</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="3-nano-编辑器无法修改配置文件">3. nano 编辑器无法修改配置文件</h3>
+<table>
+	<thead>
+			<tr>
+					<th>项目</th>
+					<th>内容</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>问题现象</td>
+					<td><code>nano</code> 无法正常编辑 <code>/etc/ssh/sshd_config</code></td>
+			</tr>
+			<tr>
+					<td>解决方法</td>
+					<td>改用 VS Code 终端：<code>code /etc/ssh/sshd_config</code>；或用 <code>vi/vim</code> 编辑</td>
+			</tr>
+			<tr>
+					<td>vi 操作提示</td>
+					<td>按 <code>i</code> 进入编辑模式，修改后按 <code>Esc</code> 退出编辑，输入 <code>:wq</code> 保存退出</td>
+			</tr>
+	</tbody>
+</table>
+<h3 id="4-其他常见问题速查">4. 其他常见问题速查</h3>
 <table>
 	<thead>
 			<tr>

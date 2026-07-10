@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 500" width="860" height="500" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#1e1e2e; }
+    .prompt{ fill:#cba6f7; }
+    .cmd{ fill:#f9e2af; }
+    .err{ fill:#f38ba8; }
+    .ok{ fill:#a6e3a1; }
+    .dim{ fill:#6c7086; font-size:13px; }
+    .kw{ fill:#f9e2af; }
+    .str{ fill:#a6e3a1; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="860" height="500"/>
+
+  <g font-size="13.5">
+    <!-- 失败的端口检查 -->
+    <text class="prompt" x="20" y="36">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="36">sudo ss -tlnp | grep 2222</text>
+
+    <text class="prompt" x="20" y="60">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="60">ssh localhost -p 2222</text>
+    <text class="err" x="20" y="84">ssh: connect to host localhost port 2222: Connection refused</text>
+
+    <text x="20" y="108"></text>
+
+    <!-- 服务状态 -->
+    <text class="prompt" x="20" y="132">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="132">sudo service ssh status</text>
+
+    <text class="ok" x="20" y="156">ssh.service - OpenBSD Secure Shell server</text>
+    <text class="dim" x="20" y="176">Loaded: loaded (/lib/systemd/system/ssh.service; enabled; preset: enabled)</text>
+    <text class="ok" x="20" y="196">Active: active (running) since Fri 2026-07-10 15:35:24 CST; 1min 57s ago</text>
+    <text class="dim" x="20" y="216">TriggeredBy: ● ssh.socket</text>
+    <text class="dim" x="20" y="236">Main PID: 2565 (sshd)</text>
+
+    <text class="ok" x="20" y="260">Jul 10 15:35:24 ffuu sshd[2565]: Server listening on 0.0.0.0 port 22.</text>
+    <text class="ok" x="20" y="280">Jul 10 15:35:24 ffuu sshd[2565]: Server listening on :: port 22.</text>
+
+    <text x="20" y="304"></text>
+
+    <!-- 端口配置检查 -->
+    <text class="prompt" x="20" y="328">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="328">sudo grep -E "^Port|^#Port" /etc/ssh/sshd_config</text>
+    <text class="dim" x="20" y="352">#Port 22</text>
+    <text class="str" x="20" y="372">Port 2222</text>
+  </g>
+</svg>

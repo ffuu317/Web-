@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" width="860" height="380" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#1e1e2e; }
+    .prompt{ fill:#a6e3a1; }
+    .cmd{ fill:#f9e2af; }
+    .ok{ fill:#89b4fa; }
+    .err{ fill:#f38ba8; }
+    .dim{ fill:#6c7086; font-size:13px; }
+    .user{ fill:#f5c2e7; font-weight:600; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="860" height="380"/>
+
+  <g font-size="14">
+    <!-- 错误命令 Is /home -->
+    <text class="prompt" x="20" y="40">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="40">Is /home</text>
+    <text class="err" x="20" y="68">Is: command not found</text>
+
+    <!-- whoami -->
+    <text class="prompt" x="20" y="104">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="104">whoami</text>
+    <text class="user" x="20" y="132">ffuu</text>
+
+    <!-- 正确的 ls /home -->
+    <text class="prompt" x="20" y="168">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="168">ls /home</text>
+    <text class="user" x="20" y="196">ffuu</text>
+
+    <!-- which sshd -->
+    <text class="prompt" x="20" y="232">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="232">which sshd</text>
+    <text class="ok" x="20" y="260">/usr/sbin/sshd</text>
+
+    <!-- 提示符 -->
+    <text class="prompt" x="20" y="296">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="296">_</text>
+
+    <!-- 装饰横线 -->
+    <line x1="0" y1="340" x2="860" y2="340" stroke="#313244" stroke-width="1" stroke-dasharray="4,4"/>
+    <text class="dim" x="20" y="364">提示：Is（大写i）和 ls（小写L）在终端字体里长得很像，注意区分</text>
+  </g>
+</svg>

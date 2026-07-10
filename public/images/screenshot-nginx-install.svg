@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 500" width="860" height="500" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#1e1e2e; }
+    .prompt{ fill:#a6e3a1; }
+    .cmd{ fill:#f9e2af; }
+    .ok{ fill:#89b4fa; }
+    .dim{ fill:#6c7086; font-size:13px; }
+    .version{ fill:#a6e3a1; font-weight:600; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="860" height="500"/>
+
+  <g font-size="13.5">
+    <text class="prompt" x="20" y="36">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="36">sudo apt install nginx -y</text>
+
+    <text class="dim" x="20" y="62">Reading package lists... Done</text>
+    <text class="dim" x="20" y="82">Building dependency tree... Done</text>
+    <text class="dim" x="20" y="102">Reading state information... Done</text>
+
+    <text class="ok" x="20" y="128">The following NEW packages will be installed:</text>
+    <text class="dim" x="20" y="148">  nginx nginx-common</text>
+
+    <text class="dim" x="20" y="174">0 upgraded, 2 newly installed, 0 to remove and 111 not upgraded.</text>
+    <text class="dim" x="20" y="194">Need to get 568 kB of archives.</text>
+    <text class="dim" x="20" y="214">After this operation, 1599 kB of additional disk space will be used.</text>
+
+    <text class="ok" x="20" y="240">Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 nginx-common all 1.24.0-2ubuntu7.13 [44.5 kB]</text>
+    <text class="ok" x="20" y="260">Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 nginx amd64 1.24.0-2ubuntu7.13 [524 kB]</text>
+    <text class="ok" x="20" y="280">Fetched 230 kB in 1min 6s (3503 B/s)</text>
+
+    <text class="dim" x="20" y="306">Preconfiguring packages ...</text>
+    <text class="dim" x="20" y="326">Selecting previously unselected package nginx-common.</text>
+    <text class="dim" x="20" y="346">Unpacking nginx-common (1.24.0-2ubuntu7.13) ...</text>
+    <text class="dim" x="20" y="366">Selecting previously unselected package nginx.</text>
+    <text class="dim" x="20" y="386">Unpacking nginx (1.24.0-2ubuntu7.13) ...</text>
+    <text class="dim" x="20" y="406">Setting up nginx-common (1.24.0-2ubuntu7.13) ...</text>
+    <text class="dim" x="20" y="426">Setting up nginx (1.24.0-2ubuntu7.13) ...</text>
+    <text class="ok" x="20" y="446">Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.</text>
+
+    <text class="prompt" x="20" y="476">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="476">nginx -v</text>
+    <text class="version" x="20" y="500">nginx version: nginx/1.24.0 (Ubuntu)</text>
+  </g>
+</svg>

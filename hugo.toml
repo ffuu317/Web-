@@ -47,3 +47,7 @@ theme = "ananke"
 # 首页最近文章数量（Ananke 会读取这个参数）
 recent_posts_number = 6
 mainSections = ["posts"]
+
+# 允许 Markdown 中直接使用原生 HTML（图注、引用块等由我们自己控制内容）
+[markup.goldmark.renderer]
+unsafe = true

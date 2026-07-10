@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 460" width="860" height="460" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#1e1e2e; }
+    .prompt{ fill:#a6e3a1; }
+    .cmd{ fill:#f9e2af; }
+    .ok{ fill:#89b4fa; }
+    .dim{ fill:#6c7086; font-size:13px; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="860" height="460"/>
+
+  <g font-size="13.5">
+    <text class="prompt" x="20" y="36">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="36">sudo apt update</text>
+
+    <text class="ok" x="20" y="62">Get:17 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]</text>
+    <text class="ok" x="20" y="82">Get:18 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [656 B]</text>
+    <text class="ok" x="20" y="102">Get:19 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [40.6 kB]</text>
+    <text class="ok" x="20" y="122">Get:20 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [5740 B]</text>
+    <text class="ok" x="20" y="142">Get:21 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B]</text>
+    <text class="ok" x="20" y="162">Get:22 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [31.0 kB]</text>
+    <text class="ok" x="20" y="182">Get:23 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.6 kB]</text>
+    <text class="ok" x="20" y="202">Get:24 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1588 B]</text>
+
+    <text class="dim" x="20" y="228">Hit:25 https://deb.nodesource.com/node_20.x nodistro InRelease</text>
+
+    <text class="ok" x="20" y="254">Get:26 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]</text>
+    <text class="ok" x="20" y="274">Get:27 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [827 kB]</text>
+    <text class="ok" x="20" y="294">Get:28 http://security.ubuntu.com/ubuntu noble-security/main Translation-en [187 kB]</text>
+    <text class="ok" x="20" y="314">Get:29 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [44.8 kB]</text>
+    <text class="ok" x="20" y="334">Get:30 http://security.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [11.9 kB]</text>
+    <text class="ok" x="20" y="354">Get:31 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [231 kB]</text>
+    <text class="ok" x="20" y="374">Get:32 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [76.3 kB]</text>
+    <text class="ok" x="20" y="394">Get:33 http://security.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [24.2 kB]</text>
+    <text class="ok" x="20" y="414">Fetched 10.0 MB in 16s (613 kB/s)</text>
+    <text class="dim" x="20" y="434">Reading package lists... Done</text>
+    <text class="dim" x="20" y="454">111 packages can be upgraded. Run 'apt list --upgradable' to see them.</text>
+  </g>
+</svg>

@@ -225,6 +225,33 @@ article.bb.b--black-10 a.ba:hover{
   box-shadow: none;
 }
 
+/* 实验截图：居中、轻微阴影、可点击放大 */
+.nested-copy-line-height img,
+.is-home main > article img{
+  display: block;
+  margin: 1.1rem auto;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* 图注样式 */
+.img-caption{
+  text-align: center;
+  color: var(--muted);
+  font-size: .92rem;
+  margin: -.4rem 0 1.4rem;
+  letter-spacing: .02em;
+}
+
+/* 截图区段加大留白 */
+.nested-copy-line-height h3{
+  padding-top: .3rem;
+}
+
 blockquote{
   margin-left: 0;
   padding: .85rem 1rem;

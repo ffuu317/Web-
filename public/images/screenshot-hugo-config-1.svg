@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 640" width="920" height="640" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#ffffff; }
+    .topbar{ fill:#f6f8fa; }
+    .gutter{ fill:#f6f8fa; }
+    .ln{ fill:#8b949e; font-size:13px; }
+    .k{ fill:#cf222e; }
+    .s{ fill:#0a3069; }
+    .c{ fill:#6e7781; font-style:italic; }
+    .t{ fill:#24292f; }
+    .tn{ fill:#57606a; font-family:-apple-system,Segoe UI,sans-serif; font-size:13px; }
+    .kw{ fill:#8250df; }
+  </style>
+
+  <!-- 窗口装饰条 -->
+  <rect class="topbar" x="0" y="0" width="920" height="36"/>
+  <line x1="0" y1="36" x2="920" y2="36" stroke="#d0d7de" stroke-width="1"/>
+  <circle cx="20" cy="18" r="6" fill="#ff5f57"/>
+  <circle cx="40" cy="18" r="6" fill="#febc2e"/>
+  <circle cx="60" cy="18" r="6" fill="#28c840"/>
+  <text class="tn" x="460" y="22" text-anchor="middle">hugo.toml</text>
+
+  <!-- 主体 -->
+  <rect class="bg" x="0" y="36" width="920" height="604"/>
+  <rect class="gutter" x="0" y="36" width="52" height="604"/>
+  <line x1="52" y1="36" x2="52" y2="640" stroke="#d0d7de" stroke-width="1"/>
+
+  <!-- 代码 + 行号 -->
+  <g font-size="14">
+    <!-- 行 1 -->
+    <text class="ln" x="40" y="68" text-anchor="end">1</text>
+    <text class="k" x="68" y="68">baseURL</text>
+    <text class="t" x="120" y="68">=</text>
+    <text class="s" x="135" y="68">"http://localhost:1313/"</text>
+
+    <!-- 行 2 -->
+    <text class="ln" x="40" y="92" text-anchor="end">2</text>
+    <text class="k" x="68" y="92">locale</text>
+    <text class="t" x="120" y="92">=</text>
+    <text class="s" x="135" y="92">"zh-cn"</text>
+
+    <!-- 行 3 -->
+    <text class="ln" x="40" y="116" text-anchor="end">3</text>
+    <text class="k" x="68" y="116">title</text>
+    <text class="t" x="120" y="116">=</text>
+    <text class="s" x="135" y="116">"软件开发工具实践 - 小组站点"</text>
+
+    <!-- 行 4 -->
+    <text class="ln" x="40" y="140" text-anchor="end">4</text>
+    <text class="k" x="68" y="140">theme</text>
+    <text class="t" x="120" y="140">=</text>
+    <text class="s" x="135" y="140">"ananke"</text>
+
+    <!-- 行 5 空 -->
+    <text class="ln" x="40" y="164" text-anchor="end">5</text>
+
+    <!-- 行 6 -->
+    <text class="ln" x="40" y="188" text-anchor="end">6</text>
+    <text class="c" x="68" y="188"># 顶部导航（目录）</text>
+
+    <!-- 行 7 -->
+    <text class="ln" x="40" y="212" text-anchor="end">7</text>
+    <text class="kw" x="68" y="212">[[menu.main]]</text>
+
+    <!-- 行 8 -->
+    <text class="ln" x="40" y="236" text-anchor="end">8</text>
+    <text class="k" x="84" y="236">name</text>
+    <text class="t" x="135" y="236">=</text>
+    <text class="s" x="150" y="236">"首页"</text>
+
+    <!-- 行 9 -->
+    <text class="ln" x="40" y="260" text-anchor="end">9</text>
+    <text class="k" x="84" y="260">url</text>
+    <text class="t" x="135" y="260">=</text>
+    <text class="s" x="150" y="260">"/"</text>
+
+    <!-- 行 10 -->
+    <text class="ln" x="40" y="284" text-anchor="end">10</text>
+    <text class="k" x="84" y="284">weight</text>
+    <text class="t" x="135" y="284">=</text>
+    <text class="s" x="150" y="284">1</text>
+
+    <!-- 行 11 空 -->
+    <text class="ln" x="40" y="308" text-anchor="end">11</text>
+
+    <!-- 行 12 -->
+    <text class="ln" x="40" y="332" text-anchor="end">12</text>
+    <text class="kw" x="68" y="332">[[menu.main]]</text>
+
+    <!-- 行 13 -->
+    <text class="ln" x="40" y="356" text-anchor="end">13</text>
+    <text class="k" x="84" y="356">name</text>
+    <text class="t" x="135" y="356">=</text>
+    <text class="s" x="150" y="356">"实验记录"</text>
+
+    <!-- 行 14 -->
+    <text class="ln" x="40" y="380" text-anchor="end">14</text>
+    <text class="k" x="84" y="380">url</text>
+    <text class="t" x="135" y="380">=</text>
+    <text class="s" x="150" y="380">"/posts/"</text>
+
+    <!-- 行 15 -->
+    <text class="ln" x="40" y="404" text-anchor="end">15</text>
+    <text class="k" x="84" y="404">weight</text>
+    <text class="t" x="135" y="404">=</text>
+    <text class="s" x="150" y="404">2</text>
+
+    <!-- 行 16 空 -->
+    <text class="ln" x="40" y="428" text-anchor="end">16</text>
+
+    <!-- 行 17 -->
+    <text class="ln" x="40" y="452" text-anchor="end">17</text>
+    <text class="kw" x="68" y="452">[[menu.main]]</text>
+
+    <!-- 行 18 -->
+    <text class="ln" x="40" y="476" text-anchor="end">18</text>
+    <text class="k" x="84" y="476">name</text>
+    <text class="t" x="135" y="476">=</text>
+    <text class="s" x="150" y="476">"任务问题"</text>
+
+    <!-- 行 19 -->
+    <text class="ln" x="40" y="500" text-anchor="end">19</text>
+    <text class="k" x="84" y="500">url</text>
+    <text class="t" x="135" y="500">=</text>
+    <text class="s" x="150" y="500">"/team/"</text>
+
+    <!-- 行 20 -->
+    <text class="ln" x="40" y="524" text-anchor="end">20</text>
+    <text class="k" x="84" y="524">weight</text>
+    <text class="t" x="135" y="524">=</text>
+    <text class="s" x="150" y="524">3</text>
+
+    <!-- 行 21 空 -->
+    <text class="ln" x="40" y="548" text-anchor="end">21</text>
+
+    <!-- 行 22 -->
+    <text class="ln" x="40" y="572" text-anchor="end">22</text>
+    <text class="kw" x="68" y="572">[[menu.main]]</text>
+
+    <!-- 行 23 -->
+    <text class="ln" x="40" y="596" text-anchor="end">23</text>
+    <text class="k" x="84" y="596">name</text>
+    <text class="t" x="135" y="596">=</text>
+    <text class="s" x="150" y="596">"部署"</text>
+
+    <!-- 行 24 -->
+    <text class="ln" x="40" y="620" text-anchor="end">24</text>
+    <text class="k" x="84" y="620">url</text>
+    <text class="t" x="135" y="620">=</text>
+    <text class="s" x="150" y="620">"/deploy/"</text>
+
+    <!-- 行 25 -->
+    <text class="ln" x="40" y="644" text-anchor="end">25</text>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 200" width="920" height="200" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#012456; }
+    .topbar{ fill:#021b3a; }
+    .arrow{ fill:#21a7f0; }
+    .caret{ fill:#ffffff; }
+    .t{ fill:#e6edf3; font-size:14px; }
+    .tn{ fill:#9ca3af; font-family:-apple-system,Segoe UI,sans-serif; font-size:13px; }
+  </style>
+
+  <!-- 标题栏 -->
+  <rect class="topbar" x="0" y="0" width="920" height="34"/>
+  <line x1="0" y1="34" x2="920" y2="34" stroke="#1e293b" stroke-width="1"/>
+  <text class="tn" x="14" y="22">Windows PowerShell</text>
+  <line x1="120" y1="10" x2="120" y2="24" stroke="#374151" stroke-width="1"/>
+  <text class="tn" x="130" y="22">+</text>
+  <text class="tn" x="155" y="22">˅</text>
+  <line x1="888" y1="10" x2="888" y2="24" stroke="#374151" stroke-width="1"/>
+  <text class="tn" x="896" y="22" text-anchor="end">—  □  ✕</text>
+
+  <!-- 终端主体 -->
+  <rect class="bg" x="0" y="34" width="920" height="166"/>
+
+  <!-- PS 提示符与命令 -->
+  <text class="arrow" x="20" y="80" font-size:="14">PS </text>
+  <text class="t" x="44" y="80">C:\Users\Lenovo\hugo&gt; hugo version</text>
+
+  <!-- 输出 -->
+  <text class="t" x="20" y="115">hugo v0.164.0-ce2470e7012b5ab5fc4e10ebe4027e9f8d9e00dc+extended windows/amd64</text>
+  <text class="t" x="640" y="115"></text>
+  <text class="t" x="20" y="138">BuildDate=2026-07-06T16:39:30Z VendorInfo=gohugoio</text>
+
+  <!-- 光标 -->
+  <rect class="caret" x="20" y="160" width="9" height="18"/>
+</svg>

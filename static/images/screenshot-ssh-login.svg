@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 460" width="860" height="460" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+  <style>
+    .bg{ fill:#1e1e2e; }
+    .prompt{ fill:#cba6f7; }
+    .cmd{ fill:#f9e2af; }
+    .ok{ fill:#a6e3a1; }
+    .dim{ fill:#6c7086; font-size:13px; }
+    .title{ fill:#89b4fa; font-weight:600; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="860" height="460"/>
+
+  <g font-size="13.5">
+    <text class="prompt" x="20" y="36">ffuu@ffuu:~$</text>
+    <text class="cmd" x="130" y="36">ssh localhost -p 2222</text>
+
+    <text class="dim" x="20" y="60">The authenticity of host '[localhost]:2222' can't be established.</text>
+    <text class="dim" x="20" y="80">ED25519 key fingerprint is SHA256:...(fingerprint)...</text>
+    <text class="dim" x="20" y="100">Are you sure you want to continue connecting (yes/no/[fingerprint])?</text>
+    <text class="ok" x="20" y="120">yes</text>
+    <text class="dim" x="20" y="140">Warning: Permanently added '[localhost]:2222' to the list of known hosts.</text>
+
+    <text class="dim" x="20" y="160">ffuu@localhost's password:</text>
+
+    <text class="title" x="20" y="196">Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.6.87.2-microsoft-standard-WSL2 x86_64)</text>
+
+    <text x="20" y="220"></text>
+    <text class="dim" x="20" y="240">* Documentation:  https://help.ubuntu.com</text>
+    <text class="dim" x="20" y="260">* Management:     https://landscape.canonical.com</text>
+    <text class="dim" x="20" y="280">* Support:        https://ubuntu.com/pro</text>
+
+    <text x="20" y="304"></text>
+    <text class="dim" x="20" y="324">System information as of Fri Jul 10 15:41:40 CST 2026</text>
+
+    <text x="20" y="348"></text>
+    <text class="dim" x="20" y="368">System load: 0.03</text>
+    <text class="dim" x="20" y="388">Memory usage: 6%</text>
+    <text class="dim" x="20" y="408">Users logged in: 1</text>
+
+    <text x="20" y="432"></text>
+    <text class="prompt" x="20" y="456">ffuu@localhost:~$</text>
+  </g>
+</svg>
